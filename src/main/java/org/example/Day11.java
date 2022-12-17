@@ -59,25 +59,25 @@ class Day11 implements Day {
 
         return Arrays.stream(content.split("\n\n")).map(Monkey::parse).collect(Collectors.toList());
     }
-}
 
-record Monkey(List<Long> items, String[] operations, int divisible, int trueTo, int falseTo) {
-    static Monkey parse(String input) {
-        var lines = input.split("\n");
-        var items = Arrays.stream(lines[1].split(": ")[1].split(",")).map(i -> Long.parseLong(i.trim())).collect(Collectors.toList());
-        var operation = lines[2].split("= old ")[1].split(" ");
-        var divisible = Integer.parseInt(lines[3].split("by ")[1]);
-        var trueTo = Integer.parseInt(lines[4].split("monkey ")[1]);
-        var falseTo = Integer.parseInt(lines[5].split("monkey ")[1]);
-        return new Monkey(items, operation, divisible, trueTo, falseTo);
-    }
+    private record Monkey(List<Long> items, String[] operations, int divisible, int trueTo, int falseTo) {
+        static Monkey parse(String input) {
+            var lines = input.split("\n");
+            var items = Arrays.stream(lines[1].split(": ")[1].split(",")).map(i -> Long.parseLong(i.trim())).collect(Collectors.toList());
+            var operation = lines[2].split("= old ")[1].split(" ");
+            var divisible = Integer.parseInt(lines[3].split("by ")[1]);
+            var trueTo = Integer.parseInt(lines[4].split("monkey ")[1]);
+            var falseTo = Integer.parseInt(lines[5].split("monkey ")[1]);
+            return new Monkey(items, operation, divisible, trueTo, falseTo);
+        }
 
-    long worryLevel(long level) {
-        var val = operations[1].equals("old") ? level : Integer.parseInt(operations[1]);
-        return switch (operations[0]) {
-            case "*" -> level * val;
-            case "+" -> level + val;
-            default -> throw new IllegalArgumentException();
-        };
+        long worryLevel(long level) {
+            var val = operations[1].equals("old") ? level : Integer.parseInt(operations[1]);
+            return switch (operations[0]) {
+                case "*" -> level * val;
+                case "+" -> level + val;
+                default -> throw new IllegalArgumentException();
+            };
+        }
     }
 }

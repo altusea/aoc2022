@@ -116,30 +116,31 @@ public class Day10 implements Day {
         List<Instruction> instructions = parseInput();
         p2(instructions); // BZPAJELK
     }
-}
 
-interface Instruction {
-    int getCycles();
-}
 
-class Noop implements Instruction {
-
-    @Override
-    public int getCycles() {
-        return 1;
-    }
-}
-
-class AddX implements Instruction {
-
-    int v;
-
-    AddX(int v) {
-        this.v = v;
+    private interface Instruction {
+        int getCycles();
     }
 
-    @Override
-    public int getCycles() {
-        return 2;
+    private static class Noop implements Instruction {
+
+        @Override
+        public int getCycles() {
+            return 1;
+        }
+    }
+
+    private static class AddX implements Instruction {
+
+        int v;
+
+        AddX(int v) {
+            this.v = v;
+        }
+
+        @Override
+        public int getCycles() {
+            return 2;
+        }
     }
 }

@@ -140,30 +140,30 @@ public class Day07 implements Day {
         MyDir rootDir = buildTree();
         p2(rootDir); // 5756764
     }
-}
 
-interface MyStorage {
-}
+    private interface MyStorage {
+    }
 
-class MyDir implements MyStorage {
+    private static class MyDir implements MyStorage {
 
-    //    String dirName;
-    public List<MyFile> fileList = new ArrayList<>();
-    public Map<String, MyDir> childDirs = new HashMap<>();
-    public MyDir parentDir = null;
+        //    String dirName;
+        public List<MyFile> fileList = new ArrayList<>();
+        public Map<String, MyDir> childDirs = new HashMap<>();
+        public MyDir parentDir = null;
 
-    public long dirSize = 0;
-}
+        public long dirSize = 0;
+    }
 
-class MyFile implements MyStorage {
+    private static class MyFile implements MyStorage {
 
-    String fileName;
-    public long fileSize;
-    public MyDir parentDir;
+        String fileName;
+        public long fileSize;
+        public MyDir parentDir;
 
-    public MyFile(String fileName, long fileSize, MyDir parentDir) {
-        this.fileName = fileName;
-        this.fileSize = fileSize;
-        this.parentDir = parentDir;
+        public MyFile(String fileName, long fileSize, MyDir parentDir) {
+            this.fileName = fileName;
+            this.fileSize = fileSize;
+            this.parentDir = parentDir;
+        }
     }
 }

@@ -103,17 +103,17 @@ public class Day09 implements Day {
 
         return moves.toImmutableArray();
     }
-}
 
-record Position(int x, int y) {
-    public Position move(int dx, int dy) {
-        return new Position(x + dx, y + dy);
+    record Position(int x, int y) {
+        public Position move(int dx, int dy) {
+            return new Position(x + dx, y + dy);
+        }
     }
-}
 
-enum Direction {
-    UP, DOWN, LEFT, RIGHT
-}
+    enum Direction {
+        UP, DOWN, LEFT, RIGHT
+    }
 
-record Move(Direction direction, int steps) {
+    record Move(Direction direction, int steps) {
+    }
 }
